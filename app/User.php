@@ -39,5 +39,9 @@ class User extends Authenticatable
         return $this->type === 'member';
     }
 
+    public function ads(){
+        return $this->hasMany('App\Ad');
+    }
+
 
 }
