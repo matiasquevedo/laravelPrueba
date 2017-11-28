@@ -23,7 +23,8 @@ class AdsController extends Controller
     {
         //
         $ads = Ad::orderBy('id','ASC')->paginate(7);
-        return view('admin.ads.index')->with('categories', $ads);
+        $precioTotal= DB::table('ads')->selectRaw('sum(precio)')->get();
+        return view('admin.ads.index')->with('ads', $ads)->with('total',$precioTotal);
 
     }
 
