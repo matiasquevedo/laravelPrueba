@@ -48,6 +48,9 @@ class AdsController extends Controller
     public function store(Request $request)
     {
         //
+        $ad = new Ad($request->all());
+        $ad->user_id = \Auth::user()->id;
+        $ad->save();
     }
 
     /**
