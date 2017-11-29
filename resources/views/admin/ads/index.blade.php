@@ -42,10 +42,12 @@
 </table>
 {!! $ads->render() !!}  	
 
+<h3>Total de Publicidad mes</h3>  
+    <h3>{{$total}}</h3> 
+
   </div>
   <div class="col-md-1">
-  	<h3>Total de Publicidad mes</h3>  
-    <h3>{{$total}}</h3>	
+  	
 
   </div>
 </div>

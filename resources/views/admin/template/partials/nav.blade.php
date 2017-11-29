@@ -18,6 +18,7 @@
         <li><a href="{{ route('categories.index')}}">Categorias</a></li>
         <li><a href="{{ route('articles.index')}}">Articulos</a></li>
         <li><a href="{{ route('tags.index')}}">Tags</a></li>
+        <li><a href="{{ route('ads.index')}}">Publicidad</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         @guest
