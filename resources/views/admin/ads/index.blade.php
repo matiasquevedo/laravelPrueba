@@ -10,7 +10,7 @@
 <div class="row">
   <div class="col-md-1">
   	
-  	<a href="{{ route('categories.create')}}" class="btn btn-info">Nuevo</a>
+  	<a href="{{ route('ads.create')}}" class="btn btn-info">Nuevo</a>
 
   </div>
   <div class="col-md-10">

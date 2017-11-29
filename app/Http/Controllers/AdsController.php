@@ -36,6 +36,7 @@ class AdsController extends Controller
     public function create()
     {
         //
+        return view('admin.ads.create');
     }
 
     /**
