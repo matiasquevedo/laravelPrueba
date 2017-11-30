@@ -8,7 +8,7 @@
 
 
 <div class="row">
-  <div class="col-md-1">
+  <div class="col-md-2">
   	
   	<a href="{{ route('ads.create')}}" class="btn btn-info">Nuevo</a>
 
@@ -20,7 +20,7 @@
     <tr>
       <th>#Id</th>
       <th>Nombre</th>
-      <th>Precio</th>
+      <th>Precio Contratado</th>
       <th>Periodo</th>
     </tr>
   </thead>
@@ -41,16 +41,12 @@
   </tbody>
 </table>
 {!! $ads->render() !!}  	
-
-<h3>Total de Publicidad mes</h3>  
-    <h3>{{$total}}</h3> 
-
-  </div>
-  <div class="col-md-1">
-  	
+  <h3>Total de Publicidad mes:  {{$total}}</h3> 
+    
+    
 
   </div>
-</div>
+ </div>
 
 
 
