@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['prefix'=>'/v1','middleware' => 'cors'], function(){
-	Route::get('/',[
+	Route::get('/articles',[
 		'uses'=>'ArticlesController@ApiIndex'
 	]);
 
