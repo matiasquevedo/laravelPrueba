@@ -15,7 +15,7 @@ class AddImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('foto');
             $table->integer('article_id')->unsigned();
 
 

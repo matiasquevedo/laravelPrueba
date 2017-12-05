@@ -66,7 +66,7 @@ class ArticlesController extends Controller
         $article->save();
 
         $image = new Image();
-        $image->name = $name;
+        $image->foto = $name;
         $image->article()->associate($article);
         $image->save();
 
@@ -90,7 +90,7 @@ class ArticlesController extends Controller
         $article->save();
 
         $image = new Image();
-        $image->name = $name;
+        $image->foto = $name;
         $image->article()->associate($article);
         $image->save();
 
@@ -110,7 +110,7 @@ class ArticlesController extends Controller
     {
         //
         $article = Article::find($id);
-        $image = DB::table('images')->where('article_id',$id)->value('name');
+        $image = DB::table('images')->where('article_id',$id)->value('foto');
         
 
         return view('admin.articles.show')->with('article',$article)->with('image',$image);
@@ -245,7 +245,8 @@ class ArticlesController extends Controller
 
     public function ApiIndex(){
 
-        $articles = Article::with('user','category','images','tags')->orderBy('id','DESC')->get();
+        //$articles = Article::with('user','category','images','tags')->orderBy('id','DESC')->get();
+        $articles = DB::table('articlespostview')->get();
         $json = json_decode($articles,true);
         return response()->json(array('result'=>$json));
 
