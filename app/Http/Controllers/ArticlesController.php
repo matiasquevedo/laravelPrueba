@@ -272,8 +272,8 @@ class ArticlesController extends Controller
 
     public function ApiArticlesByCategory($id){
         $category = Category::with('articles')->get()->find($id);        
-        $json = json_decode($article,true);
-        return response()->json(array('result'=>$category));
+        $json = json_decode($category,true);
+        return response()->json(array('result'=>$json));
     }
 
 }
