@@ -151,3 +151,7 @@ Route::group(['prefix'=>'editor','middleware'=>['auth','editor']], function(){
 Auth::routes();
 #
 Route::get('/', 'HomeController@index');
+Route::get('article/{id}/',[
+		'uses'=>'ArticlesController@PublicShow',
+		'as'=>'users.public'
+	]);

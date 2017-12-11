@@ -276,6 +276,19 @@ class ArticlesController extends Controller
         return response()->json(array('result'=>$json));
     }
 
+
+
+    public function PublicShow($id){
+        $article = Article::find($id);
+        $image = DB::table('images')->where('article_id',$id)->value('foto');
+        //dd($article);
+
+        return view('show')->with('article',$article)->with('image',$image);
+    }
+
+
+
+
 }
 
 /*'title','state','title','content','user_id','category_id'

@@ -1,10 +1,24 @@
-@extends('admin.template.main')
+<html>
+	<head>
+		<meta>
+		<title>@yield('title','Default') | Panel de Administracion</title>
 
-@section('title', 'Inicio')
+		<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css')}}">	
+		<link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">
+		<link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.css')}}">
+	</head>
+	<body>
+		@include('flash::message')
+		<section>
+			@yield('content')
+			
 
-@section('content')
-    
-    <h1>Hola esto es bootstrap</h1>
-    <a href="" class="btn btn-success">boton</a>
+		</section>
+		<script src="{{asset('plugins/jquery/jquery.js')}}"></script>
+		<script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
+		<script src="{{asset('plugins/chosen/chosen.jquery.js')}}"></script>
+		<script src="{{asset('plugins/trumbowyg/dist/trumbowyg.js')}}"></script>
+		@yield('js')
+	</body>
 
-@endsection
+</html>
