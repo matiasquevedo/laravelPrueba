@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Ad;
 use App\User;
+use App\ImageAd;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ArticleRequest;
@@ -23,7 +24,9 @@ class AdsController extends Controller
     {
         //
         $ads = Ad::orderBy('id','ASC')->paginate(7);
-        return view('admin.ads.index')->with('categories', $ads);
+        $precioTotal= DB::table('ads')->selectRaw('sum(precio)')->get()->toJson();
+        //dd($precioTotal);
+        return view('admin.ads.index')->with('ads', $ads)->with('total',$precioTotal);
 
     }
 
@@ -35,6 +38,7 @@ class AdsController extends Controller
     public function create()
     {
         //
+        return view('admin.ads.create');
     }
 
     /**
@@ -46,6 +50,23 @@ class AdsController extends Controller
     public function store(Request $request)
     {
         //
+        if($request->file('image')){
+            $file = $request->file('image');
+            $name = 'diario_publicidad_' . time() . '.' . $file->getClientOriginalExtension();
+            $path = public_path() . '/images/publicistas/';
+            $file->move($path,$name);
+        }
+        $ad = new Ad($request->all());
+        $ad->user_id = \Auth::user()->id;
+        $ad->save();
+
+        $image = new ImageAd();
+        $image->name = $name;
+        $image->ads()->associate($ad);
+        $image->save();
+
+        return redirect()->route('ads.index');
+
     }
 
     /**
@@ -57,6 +78,11 @@ class AdsController extends Controller
     public function show($id)
     {
         //
+        $ad = Ad::find($id);
+        $image = DB::table('imagesAds')->where('ads_id',$id)->value('name'); 
+        $precioMensual = $ad->precio / $ad->periodo;       
+
+        return view('admin.ads.show')->with('ad',$ad)->with('image',$image)->with('precioMensual',$precioMensual);
     }
 
     /**
@@ -91,5 +117,11 @@ class AdsController extends Controller
     public function destroy($id)
     {
         //
+        $ad = Ad::find($id);
+        $ad->delete();
+        flash('Se a eliminado el articulo ' . $ad->name)->error();
+        return redirect()->route('ads.index');
+       /* DB_USERNAME=inggerar_diario
+        DB_PASSWORD=diariosouar*/
     }
 }

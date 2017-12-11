@@ -16,7 +16,8 @@ class AddAdsTable extends Migration
         //
         Schema::create('ads', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('category',['0','1'])->default('0');
+            $table->enum('category',['0','1','3']);
+            $table->enum('ubicacion',['0','1','3']);
             $table->float('precio', 8, 2);
             $table->integer('periodo');
             $table->string('name');
