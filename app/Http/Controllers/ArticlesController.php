@@ -271,7 +271,7 @@ class ArticlesController extends Controller
     }
 
     public function ApiArticlesByCategory($id){
-        $category = Category::with('articles')->get()->find($id);        
+        $category = DB::table('categoryarticlespost')->where('category_id','LIKE',"%$id%")->get();        
         $json = json_decode($category,true);
         return response()->json(array('result'=>$json));
     }
