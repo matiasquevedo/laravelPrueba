@@ -25,7 +25,7 @@ class ArticlesController extends Controller
     public function index(Request $request)
     {
         //
-        $articles = Article::Search($request->title)->orderBy('id','ASC')->paginate(7);
+        $articles = Article::Search($request->title)->orderBy('id','DESC')->paginate(7);
         $articles->each(function($articles){
             $articles->category;
             $articles->user;
