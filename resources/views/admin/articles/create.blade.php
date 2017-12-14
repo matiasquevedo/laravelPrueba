@@ -35,14 +35,23 @@
   			<div class="col-md-8">
 				<div class="form-group">
 				{!! Form::label('title','Titulo*') !!}<p><i>Minimo 8 Caracteres</i></p>
-				{!! Form::text('title',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}  
+				{!! Form::text('title',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
+				</div>
+
+				<div class="form-group">
+				{!! Form::label('bajada','Bajada*') !!}<p><i>Minimo 8 Caracteres</i></p>
+				{!! Form::text('bajada',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
+				</div>
+
+				<div class="form-group">
+				{!! Form::label('volanta','Volanta*') !!}<p><i>Minimo 8 Caracteres</i></p>
+				{!! Form::text('volanta',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
 				</div>
 
 				<div class="form-group">
 				{!! Form::label('content','Contenido*') !!}
-				{!! Form::textarea('content',null,['class'=>'form-control tata','onkeyup'=>'limite_textarea(this.value)','id'=>'texto','placeholder'=>'Contenido','required']) !!}
+				{!! Form::textarea('content',null,['class'=>'form-control','id'=>'trumbowyg-demo','placeholder'=>'Contenido','required']) !!}
 				</div>
-				<span id="cont">0</span>/carateres
 			</div>
 
 
@@ -55,13 +64,14 @@
 
 
 				<div class="form-group">
-				{!! Form::label('tags','Tags*') !!}
-				{!! Form::select('tags[]',$tags,null,['class'=>'form-control select-tag','multiple','required']) !!}
-
-
+				{!! Form::label('tags','Columna*') !!}
+				{!! Form::select('tags[]',$tags,null,['class'=>'form-control select-tag','multiple']) !!}
 				</div>
 
-				 <button type="button" class="btn btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-plus"></span> </button>
+				<div class="form-group">
+				{!! Form::label('fuente','Fuente*') !!}<p><i>Minimo 8 Caracteres</i></p>
+				{!! Form::text('fuente',null,['class'=>'form-control','placeholder'=>'Fuente']) !!}
+				</div>
 
 				<div class="form-group">
 				{!! Form::label('image','Imagen de Portada*') !!}
@@ -69,10 +79,10 @@
 				</div>
 
 				<div class="preview">
-					<img id="image" width="400" height="400" src="">
+					<img id="image" width="400" height="400">
 				</div>
   			</div>
-		</div>	
+		</div>		
 
 		<div class="form-group">
 			{!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
@@ -82,39 +92,6 @@
 
 
 	</div>
-
-	<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Nuevo Tag</h4>
-        </div>
-        <div class="modal-body">
-          {!! Form::open(['route'=>'tags.moda.store', 'method'=>'POST']) !!}
-
-		<div class="form-group">
-			{!! Form::label('name','Nombre Tag') !!}
-			{!! Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre','required']) !!}
-		</div>
-
-		<div class="form-group">
-			{!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
-		</div>
-
-
-
-	{!! Form::close() !!}
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
 	
 	
 
@@ -137,7 +114,7 @@
 
 		});
 
-		$('#texto').trumbowyg();
+		$('#trumbowyg-demo').trumbowyg();
 
 		document.getElementById("upload").onchange = function() {
 			var reader = new FileReader(); //instanciamos el objeto de la api FileReader

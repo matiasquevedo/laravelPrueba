@@ -66,7 +66,9 @@
 					<div class="col-md-6">
 						<div class="form-group">
 							{!! Form::label('Ubicacion','Ubicacion*') !!} <br>
-							{!! Form::select('ubicacion', array('0' => 'Pagina Princial', '1' => 'Noticias Especificas','2' => 'Notificaciones'), null,['class'=>'form-control select-tag','multiple','required']) !!} 
+							{!! Form::select('principal', array('0' => 'Pagina Princial'), null,['class'=>'form-control select-tag','multiple','id'=>'principal']) !!} 
+							{!! Form::select('especificas', array('0' => 'Noticias Especificas'), null,['class'=>'form-control select-tag','multiple','id'=>'especificas']) !!}
+							{!! Form::select('notificacion', array('0' => 'Notificaciones'), null,['class'=>'form-control select-tag','multiple','id'=>'notificacion']) !!}
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -77,17 +79,34 @@
 					</div>
 				</div>
 
-				<div class="form-group">
-				{!! Form::label('image','Imagen de Promocion*') !!}
-				{!! Form::file('image',['id'=>'upload','name'=>'image']) !!}
-				</div>
+				
 				
 			</div>
 		</div>	
 
+	<div class="ubicacion" id="paginaPrincipal" style="display:none;">				<div class="form-group">
+				{!! Form::label('imagePrincipal','Imagen para Pagina Principal') !!}
+				{!! Form::file('imagePrincipal',['id'=>'upload','name'=>'imagePrincipal']) !!}
+				</div>		
+	</div>
+
+	<div class="ubicacion" id="noticiasEspecificas" style="display:none;">	
+		<div class="form-group">
+				{!! Form::label('imageNoticia','Imagen para Noticia Especifica') !!}
+				{!! Form::file('imageNoticia',['id'=>'upload','name'=>'imageNoticia']) !!}
+				</div>
+	</div>
+
+	<div class="ubicacion" id="notificaciones" style="display:none;">	<div class="form-group">
+				{!! Form::label('imageNotificacion','Imagen para Notificación') !!}
+				{!! Form::file('imageNotificacion',['id'=>'upload','name'=>'imageNotificacion']) !!}
+				</div>		
+	</div>
+
 		<div class="form-group">
 			{!! Form::submit('Crear',['class'=>'btn btn-primary']) !!}
 		</div>
+
 
 		{!! Form::close() !!}
 
@@ -110,25 +129,29 @@
 			search_contains:true,
 
 		});
-
-		$('#texto').trumbowyg();
-
-		document.getElementById("upload").onchange = function() {
-			var reader = new FileReader(); //instanciamos el objeto de la api FileReader
-
-  			reader.onload = function(e) {
-    		document.getElementById("image").src = e.target.result;
-  			};
-
-  		// read the image file as a data URL.
-  		reader.readAsDataURL(this.files[0]);
+		document.getElementById("principal").onchange = function() {
+			if ($("#principal").val()=="0" ){
+           		$("#paginaPrincipal").show();
+      		} else{
+           		$("#paginaPrincipal").hide();
+      		} 						
 		};
 
-		function limite_textarea(valor) {   
-    		total = valor.length;
-        	document.getElementById('cont').innerHTML = total;
-		}
+		document.getElementById("especificas").onchange = function() {
+			if ($("#especificas").val()=="0" ){
+           		$("#noticiasEspecificas").show();
+      		} else{
+           		$("#noticiasEspecificas").hide();
+      		} 						
+		};
 
+		document.getElementById("notificacion").onchange = function() {
+			if ($("#notificacion").val()=="0" ){
+           		$("#notificaciones").show();
+      		} else{
+           		$("#notificaciones").hide();
+      		} 						
+		};
 		
 
 		

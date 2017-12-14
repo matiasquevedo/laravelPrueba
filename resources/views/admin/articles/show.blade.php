@@ -20,13 +20,28 @@
 			<div class="btn btn-default"><a href="{{ route('articles.undpost',$article->id)}}">No Publicar</a></div>
   		@endif
   		</h3>
+
+      <div>
+              {!!$article->volanta!!}
+      </div>
+
+
   		<div class="panel panel-default">
   			<div class="panel-body" id="content">
   				
           <div>
 
+            <div>
+              <h4>{!!$article->bajada!!}</h4>
+            </div>
+            
   					{!!$article->content!!}  					
   				
+          </div>
+          <div>
+            <div>
+              <h3>Fuente: {!!$article->fuente!!}</h3>
+            </div>
           </div>
 
   				<div>

@@ -17,7 +17,10 @@ class AddArticlesTable extends Migration
             $table->increments('id');
             $table->enum('state',['0','1'])->default('0');
             $table->string('title');
+            $table->string('bajada');
+            $table->string('volanta');
             $table->text('content');
+            $table->string('fuente');
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();
 

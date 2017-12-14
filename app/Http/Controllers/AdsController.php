@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Ad;
+use App\AdNoticia;
+use App\AdNotificacion;
+use App\AdPrincipal;
 use App\User;
 use App\ImageAd;
 use Laracasts\Flash\Flash;
@@ -49,22 +52,67 @@ class AdsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        if($request->file('image')){
-            $file = $request->file('image');
-            $name = 'diario_publicidad_' . time() . '.' . $file->getClientOriginalExtension();
-            $path = public_path() . '/images/publicistas/';
+        dd($request);
+        if($request->file('imagePrincipal')){
+            $file = $request->file('imagePrincipal');
+            $name = 'diario_publicidad_imagenPrincipal' . time() . '.' . $file->getClientOriginalExtension();
+            $path = public_path() . '/images/publicistas/paginaPrincipal';
             $file->move($path,$name);
+            //id category ubicacion precio periodo name image description user_id
+            $ad = new Ad();
+            $ad->user_id = \Auth::user()->id;
+            $ad->name = $request->name;
+            $ad->precio = $request->precio;
+            $ad->periodo = $request->periodo;
+            $ad->category = $request->category;
+            $ad->description = $request->description;
+            $ad->image = $name;
+            $ad->save();
+
+            $image = new ImageAd();
+            $image->name = $name;
+            $image->ads()->associate($ad);
+            $image->save();
+
+            //id name image description ads_id
+            $principal = new AdPrincipal();
+            $principal->ads_id = $ad->id;
+            $principal->name = $request->name;;
+            $principal->description = $request->description;
+            $principal->image = $image->name;
+            $principal->save();
         }
-        $ad = new Ad($request->all());
-        $ad->user_id = \Auth::user()->id;
-        $ad->save();
 
-        $image = new ImageAd();
-        $image->name = $name;
-        $image->ads()->associate($ad);
-        $image->save();
+        if($request->file('imageNoticia')){
+            $fileNoticia = $request->file('imageNoticia');
+            $nameNoticia = 'diario_publicidad_imageNoticia' . time() . '.' . $fileNoticia->getClientOriginalExtension();
+            $pathNoticia = public_path() . '/images/publicistas/Noticia';
+            $fileNoticia->move($pathNoticia,$nameNoticia);
 
+            //id name image description ads_id
+            $noticia = new AdNoticia();
+            $noticia->ads_id = $ad->id;
+            $noticia->name = $request->name;;
+            $noticia->description = $request->description;
+            $noticia->image = $nameNoticia;
+            $noticia->save();
+        }
+
+        if($request->file('imageNotificacion')){
+            $fileNotificacion = $request->file('imageNotificacion');
+            $nameNotificacion = 'diario_publicidad_imageNotificacion' . time() . '.' . $fileNotificacion->getClientOriginalExtension();
+            $pathNotificacion = public_path() . '/images/publicistas/Notificacion';
+            $fileNotificacion->move($pathNotificacion,$nameNotificacion);
+            //id name image description ads_id
+            $notificacion = new AdNotificacion();
+            $notificacion->ads_id = $ad->id;
+            $notificacion->name = $request->name;;
+            $notificacion->description = $request->description;
+            $notificacion->image = $nameNotificacion;
+            $notificacion->save();
+        }
+
+      
         return redirect()->route('ads.index');
 
     }
@@ -82,7 +130,7 @@ class AdsController extends Controller
         $image = DB::table('imagesAds')->where('ads_id',$id)->value('name'); 
         $precioMensual = $ad->precio / $ad->periodo;       
 
-        return view('admin.ads.show')->with('ad',$ad)->with('image',$image)->with('precioMensual',$precioMensual);
+        return view('admin.ads.show')->with('ad',$ad)->with('precioMensual',$precioMensual);
     }
 
     /**

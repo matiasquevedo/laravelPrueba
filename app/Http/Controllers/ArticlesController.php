@@ -55,6 +55,7 @@ class ArticlesController extends Controller
     public function store(ArticleRequest $request)
     {
         //Manipulacion de Imagenes
+        //dd($request);
         if($request->file('image')){
             $file = $request->file('image');
             $name = 'diario_' . time() . '.' . $file->getClientOriginalExtension();

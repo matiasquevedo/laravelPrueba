@@ -28,7 +28,7 @@
           <h3>Precio Mensual: {{$precioMensual}}</h3>
           <div>
             <div>
-              <img width="330" height="330" src="/images/publicistas/{{$image}}" alt="">
+              <img width="330" height="330" src="/images/publicistas/paginaPrincipal/{{$ad->image}}" alt="">
             </div>
           </div>
 
