@@ -42,4 +42,23 @@ Route::group(['prefix'=>'/v1','middleware' => 'cors'], function(){
 		'as'=>'articles.category',
 		'uses'=>'ArticlesController@ApiArticlesByCategory'
 	]);
+
+	Route::get('/ads/principal',[
+		'as'=>'ads.principal',
+		'uses'=>'AdsController@ApiIndexPrincipal'
+	]);
+
+	Route::get('/ads/noticia',[
+		'as'=>'ads.noticia',
+		'uses'=>'AdsController@ApiIndexNoticia'
+	]);
+
+	Route::get('/ads/notificacion',[
+		'as'=>'ads.notificacion',
+		'uses'=>'AdsController@ApiIndexNotificacion'
+	]);
+
+
+
+
 });
