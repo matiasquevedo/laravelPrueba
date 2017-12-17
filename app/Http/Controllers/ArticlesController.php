@@ -229,7 +229,7 @@ class ArticlesController extends Controller
 
     public function EditorArticleShow($id){
         $article = Article::find($id);
-        $image = DB::table('images')->where('article_id',$id)->value('name');        
+        $image = DB::table('images')->where('article_id',$id)->value('foto');        
 
         return view('editor.articles.show')->with('article',$article)->with('image',$image);
 
