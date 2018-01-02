@@ -8,6 +8,13 @@
     <ol class="breadcrumb">
       <li><a href="{{ route('categories.show',$article->category->id)}}">{{$article->category->name}}</a></li>
     </ol>
+    <div>
+      {{$article->created_at}}
+    </div>
+
+    <div>
+      {{$article->update_at}}
+    </div>
   </div>
 
 	<div class="container-fluid">
