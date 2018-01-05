@@ -3,7 +3,6 @@
 /public/images/articles/*
 /public/images/publicistas/*
 /public/storage
-/public/images/*
 /storage/*.key
 /vendor
 /.idea
