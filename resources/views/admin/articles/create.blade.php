@@ -69,7 +69,7 @@
 				</div>
 
 				<div class="form-group">
-				{!! Form::label('fuente','Fuente*') !!}<p><i>Minimo 8 Caracteres</i></p>
+				{!! Form::label('fuente','Fuente* (fuente propia colocar: Brick') !!}<p><i>Minimo 8 Caracteres</i></p>
 				{!! Form::text('fuente',null,['class'=>'form-control','placeholder'=>'Fuente']) !!}
 				</div>
 
