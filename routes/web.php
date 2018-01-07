@@ -59,6 +59,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'as'=>'articles.undpost'
 	]);
 
+	Route::get('articles/index/admin',[
+		'uses'=>'ArticlesController@list',
+		'as'=>'articles.list'
+	]);
+
 	//Publicidad
 	Route::resource('ads','AdsController');
 	Route::get('ads/{id}/destroy',[

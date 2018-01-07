@@ -6755,3 +6755,26 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+
+.item{
+  border: solid;
+  padding: 1 1 1 1;
+  margin-bottom: 2px !important;
+}
+
+.pins{
+    
+}
+
+
+.pin{
+    display:inline-flex;
+    /*float: right;*/
+    margin:0 0px 5px;
+    padding:5px;
+    border-radius: 30px 30px 30px 30px;
+    -moz-border-radius: 30px 30px 30px 30px;
+    -webkit-border-radius: 30px 30px 30px 30px;
+    border: 0px solid #000000;
+}

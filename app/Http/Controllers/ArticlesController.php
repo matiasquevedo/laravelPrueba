@@ -182,6 +182,16 @@ class ArticlesController extends Controller
         return redirect()->route('articles.index');
     }
 
+    public function list(Request $request){
+        $articles = Article::Search($request->title)->
+        orderBy('id','DESC')->paginate(7);
+        $articles->each(function($articles){
+            $articles->category;
+            $articles->user;
+        });
+        return view('admin.noticias')->with('articles',$articles);
+    }
+
     //////////////////////////////EDITOR!!!!!!!!!!!!///////////////////////////////////////////////////
     //////////////////////////////EDITOR!!!!!!!!!!!!///////////////////////////////////////////////////
     //////////////////////////////EDITOR!!!!!!!!!!!!///////////////////////////////////////////////////
