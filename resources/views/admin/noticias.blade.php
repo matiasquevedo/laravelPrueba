@@ -18,7 +18,7 @@
     			<h3>{{$article->bajada}}</h3>
     			<p>{{$article->volanta}}</p>
     			<div class="row">
-    				<div class="col-md-8"></div>
+    				<div class="col-md-8">{{$article->user->name}}</div>
     				<div class="col-md-4"></div>
     			</div>
     			
@@ -34,7 +34,7 @@
     			<h3>{{$article->bajada}}</h3>
     			<p>{{$article->volanta}}</p>
     			<div class="row">
-    				<div class="col-md-8"></div>
+    				<div class="col-md-8">{{$article->user->name}}</div>
     				<div class="col-md-4"></div>
     			</div>
     			
