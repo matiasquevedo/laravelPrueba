@@ -80,6 +80,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 
 
 
+
 });
 
 Route::group(['prefix'=>'editor','middleware'=>['auth','editor']], function(){
@@ -166,3 +167,10 @@ Route::get('article/{id}/',[
 		'uses'=>'ArticlesController@PublicShow',
 		'as'=>'users.public'
 	]);
+
+
+	
+Route::get('pdf/{id}',[
+		'uses'=>'AdsController@pdf',
+		'as'=>'ads.pdf'
+]);

@@ -14,7 +14,7 @@
               <span class="label label-success">Paquete 2</span>
               @endif
 
-              <div class="btn btn-default"><a href="">Generar Contrato</a></div>
+              <div class="btn btn-default"><a href="{{ route('ads.pdf', $ad->id) }}">Generar Contrato</a></div>
       </h3>
       <div class="row">
         <div class="col-md-8">
