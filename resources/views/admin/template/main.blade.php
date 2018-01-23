@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css')}}">	
 		<link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">
 		<link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.css')}}">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 	</head>
 	<body>
 		

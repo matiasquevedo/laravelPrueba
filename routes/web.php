@@ -56,6 +56,7 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'uses'=>'ArticlesController@destroy',
 		'as'=>'articles.destroy'
 	]);
+	Route::post('eliminar/varios/{datos}','ArticlesController@eliminarVarios');
 	Route::get('articles/{id}/post',[
 		'uses'=>'ArticlesController@post',
 		'as'=>'articles.post'
@@ -76,6 +77,8 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'uses'=>'AdsController@destroy',
 		'as'=>'ads.destroy'
 	]);
+
+	
 
 
 
@@ -168,9 +171,15 @@ Route::get('article/{id}/',[
 		'as'=>'users.public'
 	]);
 
+Route::group(['prefix'=>'pdf'], function(){
+	Route::get('/{id}/',[
+		'uses'=>'AdsController@CreatePdf',
+		'as'=>'ads.CreatePdf'
+	]);
 
-	
-Route::get('pdf/{id}',[
+	Route::post('storePdf/',[
 		'uses'=>'AdsController@pdf',
-		'as'=>'ads.pdf'
-]);
+		'as'=>'ads.storePdf'
+	]);
+
+});

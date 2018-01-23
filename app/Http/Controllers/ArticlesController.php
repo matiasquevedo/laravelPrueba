@@ -182,6 +182,11 @@ class ArticlesController extends Controller
         return redirect()->route('articles.index');
     }
 
+    public function eliminarVarios($datos){
+        dd($datos);
+        return view('admin.articles.create');
+    }
+
     public function list(Request $request){
         $articles = Article::Search($request->title)->
         orderBy('id','DESC')->paginate(7);
