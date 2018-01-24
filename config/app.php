@@ -179,6 +179,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
+        LaravelFCM\FCMServiceProvider::class,
+        Benwilkins\FCM\FcmNotificationServiceProvider::class,
 
 
     ],
@@ -233,6 +235,8 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
         'Flash' => Laracasts\Flash\Flash::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
+        'FCM'      => LaravelFCM\Facades\FCM::class,
+        'FCMGroup' => LaravelFCM\Facades\FCMGroup::class,
 
     ],
 

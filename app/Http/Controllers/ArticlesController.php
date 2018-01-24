@@ -14,6 +14,10 @@ use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
+use LaravelFCM\Message\OptionsBuilder;
+use LaravelFCM\Message\PayloadDataBuilder;
+use LaravelFCM\Message\PayloadNotificationBuilder;
+use FCM;
 
 class ArticlesController extends Controller
 {
@@ -195,6 +199,10 @@ class ArticlesController extends Controller
             $articles->user;
         });
         return view('admin.noticias')->with('articles',$articles);
+    }
+
+    public function notificacion($id){
+
     }
 
     //////////////////////////////EDITOR!!!!!!!!!!!!///////////////////////////////////////////////////

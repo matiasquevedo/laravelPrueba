@@ -70,6 +70,10 @@
     <br>
     <br>
     <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
     <div>
@@ -83,6 +87,43 @@ Manifiesta que está interesado en formalizar el presente contrato según las ob
       <br>
 
         <p class="text-right">FIRMA Y SELLO DE LA EMPRESA</p>
+      </div>
+    </div>
+    <div>
+      <h3 class="text-center">OBLIGACIONES Y DERECHOS</h3>
+      <div class="text-justify">
+        <h3>HECHOS</h3>
+        <ul>
+          <li>EL Diario Digital BRICK© (en adelante BRICK©) posee aplicación, web y redes sociales propios, con espacio habilitado para la inserción de publicidad de terceros.</li>
+          <li>El cliente (en adelante SPONSOR) desea incluir publicidad propia en alguno de los soportes del Diario Digital BRICK© citados en el punto anterior, acogiéndose para ello a lo dispuesto en el presente contrato.</li>
+          <li>Las partes han llegado a un acuerdo para el desarrollo de la prestación de dicho servicio, quedando reflejado por las siguientes.</li>
+        </ul>
+        <h3>HECHOS</h3>
+        <ol>
+          <li>Objeto del contrato.
+            <p>El presente contrato regula la prestación del servicio de inserción de publicidad en la aplicación, web y/o redes sociales
+Propiedad de BRICK ©</p>
+          </li>
+          <li>
+            <p></p>
+          </li>
+          <li>
+            <p></p>
+          </li>
+          <li>
+            <p></p>
+          </li>
+          <li>
+            <p></p>
+          </li>
+          <li>
+            <p></p>
+          </li>
+          <li>
+            <p></p>
+          </li>
+        </ol>
+
       </div>
     </div>
 	</body>

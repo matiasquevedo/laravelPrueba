@@ -61,7 +61,14 @@
         @endif
 
       </td>
-      <td><a href="{{ route('articles.edit', $article->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench"></span></a><a href="{{ route('articles.destroy', $article->id) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a></td>
+      <td>
+        <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-warning">   <span class="glyphicon glyphicon-wrench">          
+          </span>
+        </a>
+        <a href="{{ route('articles.destroy', $article->id) }}" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove"></span>
+        </a>
+      </td>
     </tr>
 
 

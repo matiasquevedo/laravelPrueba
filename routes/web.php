@@ -65,6 +65,13 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'uses'=>'ArticlesController@undpost',
 		'as'=>'articles.undpost'
 	]);
+	Route::get('articles/{id}/notificar',[
+		'uses'=>'ArticlesController@notificacion',
+		'as'=>'articles.notificar'
+	]);
+
+
+	
 
 	Route::get('articles/index/admin',[
 		'uses'=>'ArticlesController@list',
