@@ -58,6 +58,15 @@ Route::group(['prefix'=>'/v1','middleware' => 'cors'], function(){
 		'uses'=>'AdsController@ApiIndexNotificacion'
 	]);
 
+	Route::get('/eventos',[
+		'uses'=>'EventosController@ApiIndex'
+	]);
+
+	Route::get('/evento/{id}/show',[
+		'as'=>'eventos.show',
+		'uses'=>'EventosController@ApiShow'
+	]);
+
 
 
 

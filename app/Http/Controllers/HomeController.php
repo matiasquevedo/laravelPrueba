@@ -28,7 +28,10 @@ class HomeController extends Controller
             return view('admin.index');
         }elseif ($request->user()->type == 'member') {
             return view('editor.index');
+        }elseif ($request->user()->type == 'even') {
+            return view('eventista.index');
         }
+        
         
     }
 }

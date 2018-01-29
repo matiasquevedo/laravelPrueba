@@ -85,6 +85,61 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'as'=>'ads.destroy'
 	]);
 
+	Route::resource('ads','AdsController');
+	Route::get('ads/{id}/destroy',[
+		'uses'=>'AdsController@destroy',
+		'as'=>'ads.destroy'
+	]);
+
+	Route::get('eventos',[
+		'uses'=>'EventosController@index',
+		'as'=>'admin.eventos.index'
+	]);
+
+	Route::get('eventos/create',[
+		'uses'=>'EventosController@AdminCreate',
+		'as'=>'admin.eventos.create'
+	]);
+
+	Route::post('eventos',[
+		'uses'=>'EventosController@AdminStore',
+		'as'=>'admin.eventos.store'
+	]);
+
+
+	
+	
+	Route::get('eventos/{id}/destroy',[
+		'uses'=>'EventosController@AdminDestroy',
+		'as'=>'admin.eventos.destroy'
+	]);
+
+	Route::get('eventos/{id}/show',[
+		'uses'=>'EventosController@AdminShow',
+		'as'=>'admin.eventos.show'
+	]);
+
+	Route::get('eventos/{id}/edit',[
+		'uses'=>'EventosController@AdminEdit',
+		'as'=>'admin.eventos.edit'
+	]);
+
+	Route::put('eventos/{id}/update',[
+		'uses'=>'EventosController@AdminUpdate',
+		'as'=>'admin.eventos.update'
+	]);
+
+	Route::get('evento/{id}/post',[
+		'uses'=>'EventosController@post',
+		'as'=>'evento.post'
+	]);
+	Route::get('evento/{id}/undpost',[
+		'uses'=>'EventosController@undpost',
+		'as'=>'evento.undpost'
+	]);
+
+
+
 	
 
 
@@ -156,6 +211,8 @@ Route::group(['prefix'=>'editor','middleware'=>['auth','editor']], function(){
 	]);
 
 
+
+
 	
 	/*
 	Route::get('articles/{id}/post',[
@@ -170,7 +227,31 @@ Route::group(['prefix'=>'editor','middleware'=>['auth','editor']], function(){
 
 });
 
-Auth::routes();
+
+Route::group(['prefix'=>'even','middleware'=>['auth','eventista']], function(){
+
+	Route::get('/',function(){
+		return view('eventista.index');
+	})->name('eventista.inicio');
+
+	//Articulos
+	Route::resource('eventos','EventosController');
+	Route::get('eventos/{id}/destroy',[
+		'uses'=>'EventosController@destroy',
+		'as'=>'eventos.destroy'
+	]);
+
+	Route::get('eventos',[
+		'uses'=>'EventosController@indexUser',
+		'as'=>'eventista.eventos.index'
+	]);
+	
+	
+
+});
+
+
+
 #
 Route::get('/', 'HomeController@index');
 Route::get('article/{id}/',[
@@ -190,3 +271,6 @@ Route::group(['prefix'=>'pdf'], function(){
 	]);
 
 });
+
+
+Auth::routes();

@@ -101,6 +101,7 @@ Object.defineProperty(jQuery.trumbowyg, 'defaultOptions', {
             ['superscript', 'subscript'],
             ['link'],
             ['insertImage'],
+            ['base64'],
             ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
             ['unorderedList', 'orderedList'],
             ['horizontalRule'],
