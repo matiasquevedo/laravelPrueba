@@ -22,7 +22,7 @@ class AddAdsTable extends Migration
             $table->integer('periodo');
             $table->string('name');
             $table->string('image');
-            $table->text('description');
+            $table->longText('description');
             $table->integer('user_id')->unsigned();
             $table->timestamps();
 

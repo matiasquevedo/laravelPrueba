@@ -19,7 +19,7 @@ class AddArticlesTable extends Migration
             $table->string('title');
             $table->string('bajada');
             $table->string('volanta');
-            $table->text('content');
+            $table->longText('content');
             $table->string('fuente');
             $table->integer('user_id')->unsigned();
             $table->integer('category_id')->unsigned();

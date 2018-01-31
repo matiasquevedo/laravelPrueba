@@ -22,7 +22,7 @@ class AddEventosTable extends Migration
             $table->string('hora');
             $table->string('lugar');
             $table->string('tipo');
-            $table->text('descripcion');
+            $table->longText('descripcion');
             $table->string('precio');
             $table->integer('user_id')->unsigned();
 
