@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Evento;
 use App\User;
+use App\ImageEvento;
 use Laracasts\Flash\Flash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
@@ -62,9 +63,22 @@ class EventosController extends Controller
     public function store(Request $request)
     {
         //
+        if($request->file('image')){
+            $file = $request->file('image');
+            $name = 'diario_evento' . time() . '.' . $file->getClientOriginalExtension();
+            $path = public_path() . '/images/eventos/';
+            $file->move($path,$name);
+        }
         $evento = new Evento($request->all());
         $evento->user_id = \Auth::user()->id;
         $evento->save();
+
+        $image = new ImageEvento();
+        $image->foto = $name;
+        $image->evento()->associate($evento);
+        $image->save();
+
+
         flash('Se creado el evento ' . $evento->title)->success();
         return redirect()->route('eventista.eventos.index');
     }
@@ -72,9 +86,21 @@ class EventosController extends Controller
     public function AdminStore(Request $request)
     {
         //
+        if($request->file('image')){
+            $file = $request->file('image');
+            $name = 'diario_evento' . time() . '.' . $file->getClientOriginalExtension();
+            $path = public_path() . '/images/eventos/';
+            $file->move($path,$name);
+        }
         $evento = new Evento($request->all());
         $evento->user_id = \Auth::user()->id;
         $evento->save();
+
+        $image = new ImageEvento();
+        $image->foto = $name;
+        $image->evento()->associate($evento);
+        $image->save();
+
         flash('Se creado el evento ' . $evento->title)->success();
         return redirect()->route('admin.eventos.index');
     }
@@ -104,7 +130,7 @@ class EventosController extends Controller
         $evento->state = '1';
         $evento->save();
         flash('Se a publicado el articulo: ' . $evento->title)->success();
-        return redirect()->route('eventos.index',$evento->id);
+        return redirect()->route('admin.eventos.index',$evento->id);
     }
 
     public function undpost($id){
@@ -112,7 +138,7 @@ class EventosController extends Controller
         $evento->state = '0';
         $evento->save();
         flash('Se a publicado el articulo: ' . $evento->title)->success();
-        return redirect()->route('eventos.index',$evento->id);
+        return redirect()->route('admin.eventos.index',$evento->id);
     }
 
     /**
@@ -206,7 +232,7 @@ class EventosController extends Controller
     }
 
     public function ApiShow($id){
-        $evento = Evento::find($id);
+        $evento = Evento::with('user','images')->get()->find($id);
         $json = json_decode($evento,true);
         return response()->json(array('result'=>$json));
     }

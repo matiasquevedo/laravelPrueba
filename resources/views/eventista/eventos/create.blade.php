@@ -71,6 +71,15 @@
 				{!! Form::label('precio','Precio') !!}
 				{!! Form::text('precio',null,['class'=>'form-control','placeholder'=>'Fuente']) !!}
 				</div>
+
+				<div class="form-group">
+				{!! Form::label('image','Imagen de Portada*') !!}
+				{!! Form::file('image',['id'=>'upload','name'=>'image']) !!}
+				</div>
+
+				<div class="preview">
+					<img id="image" width="400" height="400">
+				</div>
   			</div>
 		</div>		
 
@@ -104,6 +113,17 @@
 		});
 
 		$('#trumbowyg-demo').trumbowyg();
+
+		document.getElementById("upload").onchange = function() {
+			var reader = new FileReader(); //instanciamos el objeto de la api FileReader
+
+  			reader.onload = function(e) {
+    		document.getElementById("image").src = e.target.result;
+  			};
+
+  		// read the image file as a data URL.
+  		reader.readAsDataURL(this.files[0]);
+		};
 
 	</script>
 

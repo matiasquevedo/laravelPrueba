@@ -14,7 +14,7 @@ class EventosPostView extends Migration
     public function up()
     {
         //
-        DB::statement("CREATE VIEW eventospostview AS SELECT eventos.id, eventos.title, eventos.fecha, eventos.hora, eventos.lugar, eventos.tipo, eventos.descripcion, eventos.created_at, eventos.updated_at FROM eventos WHERE state = '1' ORDER BY id DESC;");
+        DB::statement("CREATE VIEW eventospostview AS SELECT eventos.id, eventos.title, eventos.fecha, eventos.hora, eventos.precio, eventos.lugar, eventos.tipo, eventos.descripcion, eventos.created_at, eventos.updated_at, imagesEventos.foto FROM eventos, imagesEventos WHERE state = '1' ORDER BY id DESC;");
     }
 
 
