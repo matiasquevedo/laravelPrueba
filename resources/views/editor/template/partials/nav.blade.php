@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{ route('editor.inicio')}}">Inicio</a>
+      <a class="navbar-brand" href="{{ route('admin.inicio')}}"><img src="/images/brick.png" alt="" width="60px"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

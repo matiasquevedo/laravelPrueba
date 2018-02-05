@@ -53,9 +53,15 @@
 
 			</div>
 		</div>
-	</div>
+</div>
 
-	
+<div class="footer navbar-fixed-bottom">
+	<div class="text-center" style="padding-bottom: 20px;">
+		<a href="https://www.sou-ar.com">
+			<img src="/images/souar.png" alt="" width="80px">			
+		</a>                            
+	</div>	
+</div>
 
 
 @endsection

@@ -4,12 +4,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <div class="text-center" style="padding-bottom: 20px;">
+                            <img src="/images/brick.png" alt="" width="200px">
+                        </div>
             <div class="panel panel-default">
+
                 <div class="panel-heading">Iniciar Sesion</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
+
+                        
 
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                             <label for="email" class="col-md-4 control-label">Usuario</label>
@@ -56,7 +62,7 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Te olvidaste la contraseña?
+                                    Olvidé mi contraseña
                                 </a>
                             </div>
                         </div>

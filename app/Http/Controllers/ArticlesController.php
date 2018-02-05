@@ -186,9 +186,42 @@ class ArticlesController extends Controller
         return redirect()->route('articles.index');
     }
 
-    public function eliminarVarios($datos){
-        dd($datos);
-        return view('admin.articles.create');
+    public function eliminarVarios(Request $request){
+        $val=$request->act;
+        $myCheckboxes = $request->input('box');
+
+        if ($myCheckboxes == null) {            
+            return redirect()->route('articles.index');
+        } else {
+            if ($val == '0') {
+
+               foreach ($myCheckboxes as $b) {
+                   # code...
+                $article = Article::find($b);
+                $article->delete();
+               }
+               return redirect()->route('articles.index');
+            } elseif ($val == '1') {
+                foreach ($myCheckboxes as $b) {
+                   # code...
+                $article = Article::find($b);
+                $article->state = '1';
+                $article->save();
+               }
+               return redirect()->route('articles.index');
+                
+            } elseif ($val == '2') {
+                foreach ($myCheckboxes as $b) {
+                   # code...
+                $article = Article::find($b);
+                $article->state = '0';
+                $article->save();
+               }
+               return redirect()->route('articles.index');
+                
+            }
+            
+        }
     }
 
     public function list(Request $request){

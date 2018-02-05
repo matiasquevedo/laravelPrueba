@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
     <title>{{ config('app.name', 'Diario') }}</title>
 
     <!-- Styles -->
@@ -18,6 +19,7 @@
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
+                    
 
                     <!-- Collapsed Hamburger -->
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -28,8 +30,9 @@
                     </button>
 
                     <!-- Branding Image -->
+
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Diario') }}
+                        <img src="/images/brick.png" alt="" width="60px">
                     </a>
                 </div>
 

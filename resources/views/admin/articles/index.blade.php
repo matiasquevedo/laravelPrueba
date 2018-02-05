@@ -11,7 +11,7 @@
     <a href="{{ route('articles.create')}}" class="btn btn-info">Nuevo</a>
 
   </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
       <div>
     <div>
         {!! Form::open(['route'=>'articles.index','method'=>'GET','class'=>'navbar-form pull-right']) !!}
@@ -28,9 +28,12 @@
   </div>
 
 
+  {!! Form::open(['route'=>'articles.varios', 'method'=>'GET','files'=>'true']) !!}
+
       <table class="table table-striped">
   <thead>
     <tr>
+      <th></th>
       <th>#Id</th>
       <th>Titulo</th>
       <th>Categoria</th>
@@ -42,6 +45,7 @@
   <tbody>
     @foreach($articles as $article)
     <tr>
+      <td>{{ Form::checkbox('box[]',$article->id, null, ['class' => 'field']) }}</td>
       <td>{{$article->id}}</td>
       <td> <a href="{{ route('articles.show', $article->id) }}">{{$article->title}}</a></td>
       <td>{{$article->category->name}}</td>
@@ -79,11 +83,35 @@
 {!! $articles->render() !!}   
 
   </div>
-  <div class="col-md-1">
+  <div class="col-md-2">
+
+
+  <div class="form-group div-fijo">
+      {!! Form::label('act','Acción') !!}
+      {!! Form::select('act',config('multiple.opciones'),null,['class'=>'form-control','placeholder'=>'Seleccione una opción...','required']) !!}
+      {!! Form::submit('Ir',['class'=>'btn btn-primary']) !!}
+</div>
     
     
 
   </div>
 </div>
+
+{!! Form::close() !!}
+
+@endsection
+
+@section('js')
+  <script>
+
+    $('.select-tag').chosen({
+      placeholder_text_multiple:'Ubicacion de Publicidad',
+      search_contains:true,
+
+    });
+    
+
+    
+  </script>
 
 @endsection

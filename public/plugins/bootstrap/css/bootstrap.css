@@ -6782,3 +6782,7 @@ button.close {
 .pin a{
   color:black !important;
 }
+
+.div-fijo{
+  position: fixed !important;
+}

@@ -56,7 +56,10 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'uses'=>'ArticlesController@destroy',
 		'as'=>'articles.destroy'
 	]);
-	Route::post('eliminar/varios/{datos}','ArticlesController@eliminarVarios');
+	Route::get('articles/destroy/varios',[
+		'uses'=>'ArticlesController@eliminarVarios',
+		'as'=>'articles.varios'
+	]);
 	Route::get('articles/{id}/post',[
 		'uses'=>'ArticlesController@post',
 		'as'=>'articles.post'
