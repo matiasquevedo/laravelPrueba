@@ -4,41 +4,36 @@
 @section('title', 'Lista de Articulos')
 
 @section('content')
-<!-- 	<div class="container-fluid">
-  		<h3>{{$article->title}}</h3>
-  		{{$article->category->name}}
-
-  		<div class="panel panel-default">
-  			<div class="panel-body" id="content">
-  				
-          <div>
-
-  					{!!$article->content!!}  					
-  				
-          </div>
-
-  				<div>
-  					<div>
-  						<img src="/images/articles/{{$image}}" alt="">
-  					</div>
-  				</div>
-  				
-  			</div>
-		</div>
-	</div> -->
 
 <div class="container">
   <div class="row">
     <div class="col-md-8">
       <img src="/images/articles/{{$image}}" alt="">
       <h1>{{$article->title}}</h1>
-      {{$article->category->name}}
+      <h4> {{$article->category->name}} - Por: {{$article->user->name}} </h4>
+      <div>
+        <div>
+          <div class="text-justify">
+            {!!$article->content!!}
+          </div>
+          <div>
+            <h4>Fuente: {!!$article->fuente!!}</h4>
+          </div>
+        </div>
+      </div>
+
+
     </div>
-    <div class="col-md-4">
-      <img src="/images/play.png" alt="" width="80%">
+    <div class="col-md-4 ">
+      <div class="padre-aling">
+        <div class="div-fijo div-googleplay">
+          <a href="https://play.google.com/store/apps/details?id=souar.dev.brick"><img src="/images/play.png" alt="" width="80%"></a>
+        </div>        
+      </div>      
     </div>
   </div>
 </div>
+
 
 
 @endsection
