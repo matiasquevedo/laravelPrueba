@@ -247,11 +247,14 @@ class ArticlesController extends Controller
     //////////////////////////////EDITOR!!!!!!!!!!!!///////////////////////////////////////////////////
     //////////////////////////////EDITOR!!!!!!!!!!!!///////////////////////////////////////////////////
     public function EditorIndex(Request $request){
-       $articles = Article::Search($request->title)->orderBy('id','ASC')->paginate(7);
-        $articles->each(function($articles){
+       //$articles = Article::Search($request->title)->orderBy('id','ASC')->paginate(7);
+        $id = \Auth::user()->id;
+        $articles = DB::table('articles')->where('user_id','LIKE',"%$id%")->get();
+        /*$articles->each(function($articles){
             $articles->category;
             $articles->user;
-        });
+        });*/
+        //dd($articles);
         return view('editor.articles.index')->with('articles',$articles);
     }
 
