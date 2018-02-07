@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <img src="/images/brick.png" alt="" width="60px">
+      <img src="/images/brick.png" alt="" width="100px">
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
