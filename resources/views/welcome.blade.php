@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.css')}}">
 	</head>
 	<body>
+		@include('layouts.nav')
 		@include('flash::message')
 		<section>
 			@yield('content')
