@@ -1,7 +1,7 @@
 @extends('welcome')
 
 
-@section('title', 'Lista de Articulos')
+@section('title', ''.$article->title)
 
 @section('content')
 
