@@ -50,7 +50,16 @@
        						 @endif
 
       					</td>
-      					<td><a href="{{ route('editor.articles.edit', $article->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench"></span></a><a href="{{ route('editor.articles.destroy', $article->id) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a></td>
+      					<td>
+      						@if($article->state == "0")
+      						<a href="{{ route('editor.articles.edit', $article->id) }}" class="btn btn-warning">
+      							<span class="glyphicon glyphicon-wrench"></span>
+      						</a>
+      						<a href="{{ route('editor.articles.destroy', $article->id) }}" class="btn btn-danger">
+      							<span class="glyphicon glyphicon-remove"></span>
+      						</a>
+      						@endif
+      					</td>
 					</tr>
 	@endforeach	
 				</tbody>
