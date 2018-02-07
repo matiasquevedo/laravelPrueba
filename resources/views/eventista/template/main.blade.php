@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<meta>
-		<title>@yield('title','Default') | Panel de Eventista</title>
+		<title>@yield('title')</title>
 
 		<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css')}}">	
 		<link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">
