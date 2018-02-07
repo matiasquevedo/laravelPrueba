@@ -1,14 +1,14 @@
 <html>
 	<head>
 		<meta>
-		<title>@yield('title','Default')</title>
+		<title>@yield('title')</title>
 
 		<link rel="stylesheet" href="{{ asset('plugins/bootstrap/css/bootstrap.css')}}">	
 		<link rel="stylesheet" href="{{ asset('plugins/chosen/chosen.css')}}">
 		<link rel="stylesheet" href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.css')}}">
 	</head>
 	<body>
-		@include('layouts.nav')
+		@include('nav')
 		@include('flash::message')
 		<section>
 			@yield('content')
