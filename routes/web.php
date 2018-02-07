@@ -257,6 +257,7 @@ Route::group(['prefix'=>'even','middleware'=>['auth','eventista']], function(){
 
 #
 Route::get('/', 'HomeController@index');
+
 Route::get('article/{id}/',[
 		'uses'=>'ArticlesController@PublicShow',
 		'as'=>'users.public'
