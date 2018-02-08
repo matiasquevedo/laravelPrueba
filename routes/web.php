@@ -141,6 +141,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'as'=>'evento.undpost'
 	]);
 
+	Route::get('facebook/{id}/compartir',[
+		'uses'=>'ArticlesController@facebook',
+		'as'=>'facebook.compartir'
+	]);
+
 
 
 	

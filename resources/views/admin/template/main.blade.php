@@ -21,6 +21,9 @@
 		<script src="{{asset('plugins/bootstrap/js/bootstrap.js')}}"></script>
 		<script src="{{asset('plugins/chosen/chosen.jquery.js')}}"></script>
 		<script src="{{asset('plugins/trumbowyg/dist/trumbowyg.js')}}"></script>
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script src="{{ asset('js/share.js') }}"></script>
+		<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 		@yield('js')
 	</body>
 

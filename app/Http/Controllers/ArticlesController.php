@@ -18,6 +18,7 @@ use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
+use Share;
 
 class ArticlesController extends Controller
 {
@@ -116,9 +117,12 @@ class ArticlesController extends Controller
         //
         $article = Article::find($id);
         $image = DB::table('images')->where('article_id',$id)->value('foto');
+        $url = "http://diario.brickdiario.com/article/".$id;
+        $compartir = Share::currentPage()->facebook();
+        //dd($compartir);
         
 
-        return view('admin.articles.show')->with('article',$article)->with('image',$image);
+        return view('admin.articles.show')->with('article',$article)->with('image',$image)->with('compartir',$compartir);
     }
 
     public function post($id){
@@ -236,6 +240,11 @@ class ArticlesController extends Controller
 
     public function notificacion($id){
 
+    }
+
+    public function facebook($id){
+        $url = "http://diario.brickdiario.com/article/".$id;
+        Share::page($url)->facebook();
     }
 
     //////////////////////////////EDITOR!!!!!!!!!!!!///////////////////////////////////////////////////

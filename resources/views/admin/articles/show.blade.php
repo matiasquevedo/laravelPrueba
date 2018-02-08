@@ -4,6 +4,7 @@
 @section('title', 'Lista de Articulos')
 
 @section('content')
+
   <div>
     <ol class="breadcrumb">
       <li><a href="{{ route('categories.show',$article->category->id)}}">{{$article->category->name}}</a></li>
@@ -26,11 +27,16 @@
 			<span class="label label-success">Publicada</span>
 			<div class="btn btn-default"><a href="{{ route('articles.undpost',$article->id)}}">No Publicar</a></div>
   		@endif
+      <div>
+        {{$compartir}}
+      </div>
   		</h3>
 
       <div>
               {!!$article->volanta!!}
       </div>
+
+      
 
 
   		<div class="panel panel-default">
