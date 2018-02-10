@@ -53,7 +53,7 @@
       <td>{{$article->category->name}}</td>
       <td>
       @if($article->user->name == "Matias Quevedo")
-        <span class="text-center" style="font-size: 50px;"><img src="/images/jesus.svg" alt="" width="15%"></span>
+        <span class="text-center" style="font-size: 50px;"><img src="/images/jesus.svg" alt="" width="25%"></span>
       @else 
         @if($article->user->type == "member")
           {{$article->user->name}}
