@@ -40,7 +40,7 @@
 			<td>{{$user->name}}</td>
       <td>
       @if($user->name == "Matias Quevedo")
-        <span class="text-center" style="font-size: 50px;"><img src="/images/jesus.svg" alt="" width="50%"></span>
+        <span class="text-center" style="font-size: 50px;"><img src="/images/jesus.svg" alt="" width="20%"></span>
       @else 
         @if($user->type == "member")
           <span class="label label-success">{{ $user->type }}</span>
