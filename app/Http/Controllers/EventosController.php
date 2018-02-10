@@ -22,7 +22,7 @@ class EventosController extends Controller
     public function index()
     {
         //
-        $eventos = Evento::orderBy('id','ASC')->paginate(7);
+        $eventos = Evento::orderBy('id','DESC')->paginate(7);
         return view('admin.eventos.index')->with('eventos',$eventos);
     }
 
