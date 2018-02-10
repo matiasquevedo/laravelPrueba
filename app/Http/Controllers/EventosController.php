@@ -236,4 +236,14 @@ class EventosController extends Controller
         $json = json_decode($evento,true);
         return response()->json(array('result'=>$json));
     }
+
+    public function PublicShow($id){
+        //dd("todo ok");
+        $evento = Evento::find($id);
+        $image = DB::table('imagesEventos')->where('evento_id',$id)->value('foto');
+        //dd($article);
+
+        return view('showEvento')->with('evento',$evento)->with('image',$image);
+    }
+
 }

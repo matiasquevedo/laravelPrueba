@@ -261,7 +261,12 @@ Route::get('/', 'HomeController@index');
 Route::get('article/{id}/',[
 		'uses'=>'ArticlesController@PublicShow',
 		'as'=>'users.public'
-	]);
+]);
+
+Route::get('evento/{id}/',[
+		'uses'=>'EventosController@PublicShow',
+		'as'=>'evento.public'
+]);
 
 Route::group(['prefix'=>'pdf'], function(){
 	Route::get('/{id}/',[

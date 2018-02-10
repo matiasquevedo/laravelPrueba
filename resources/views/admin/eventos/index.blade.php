@@ -35,6 +35,7 @@
 					<tr>
 						<th>#Id</th>
 						<th>Titulo</th>
+						<th>URL</th>
 						<th>Estado</th>
 						<th>Acción</th>
 					</tr>
@@ -44,6 +45,7 @@
 					<tr>
 						<td>{{$evento->id}}</td>
       					<td> <a href="{{ route('admin.eventos.show', $evento->id) }}">{{$evento->title}}</a></td>
+      					<td><a href="https://diario.brickdiario.com/evento/{{$evento->id}}">diario.brickdiario.com/evento/{{$evento->id}}</a></td>
            				<td>
         					@if($evento->state == "0")
           					<span class="label label-danger">Sin Publicar</span>
