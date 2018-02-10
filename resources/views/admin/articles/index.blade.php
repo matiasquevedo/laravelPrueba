@@ -51,13 +51,18 @@
       <td> <a href="{{ route('articles.show', $article->id) }}">{{$article->title}}</a></td>
       <td><a href="https://diario.brickdiario.com/article/{{$article->id}}">diario.brickdiario.com/article/{{$article->id}}</a></td>
       <td>{{$article->category->name}}</td>
-      <td>{{$article->user->name}} 
+      <td>
+      @if($article->user->name == "Matias Quevedo")
+        <span class="text-center" style="font-size: 50px;"><img src="/images/jesus.svg" alt="" width="50%"></span>
+      @else 
         @if($article->user->type == "member")
+          {{$article->user->name}}
           <span class="label label-success">{{ $article->user->type }}</span>
         @else
+          {{$article->user->name}}
           <span class="label label-info">{{$article->user->type}}</span>
         @endif
-
+      @endif
       </td>
       <td>
         @if($article->state == "0")
