@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <img src="/images/eventos/{{$image}}" alt="" width="50%">
+      <img src="/images/eventos/{{$image}}" alt="" width="70%">
       <h1>{{$evento->title}}</h1>
 
       <div class="panel ">
