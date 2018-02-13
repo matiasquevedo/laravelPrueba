@@ -33,7 +33,6 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>#Id</th>
 						<th>Titulo</th>
 						<th>URL</th>
 						<th>Usuario</th>
@@ -44,7 +43,6 @@
 				<tbody>
 	@foreach($eventos as $evento)
 					<tr>
-						<td>{{$evento->id}}</td>
       					<td> <a href="{{ route('admin.eventos.show', $evento->id) }}">{{$evento->title}}</a></td>
       					<td><a href="https://diario.brickdiario.com/evento/{{$evento->id}}">diario.brickdiario.com/evento/{{$evento->id}}</a></td>
       					<td>{{$evento->user->name}} 

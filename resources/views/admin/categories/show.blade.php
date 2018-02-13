@@ -13,7 +13,6 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>#Id</th>
           <th>Titulo</th>
           <th>Estado</th>
           <th>Acción</th>
@@ -22,7 +21,6 @@
       <tbody>
         @foreach($articles as $article)
           <tr>
-            <td>{{$article->id}}</td>
             <td> <a href="{{ route('articles.show', $article->id) }}">{{$article->title}}</a></td>
             <td>
         @if($article->state == "0")

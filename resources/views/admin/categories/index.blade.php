@@ -18,7 +18,6 @@
   		<table class="table table-striped">
   <thead>
     <tr>
-      <th>#Id</th>
       <th>Nombre</th>
       <th>Acción</th>
     </tr>
@@ -26,7 +25,6 @@
   <tbody>
   	@foreach($categories as $category)
 		<tr>
-			<td>{{$category->id}}</td>
 			<td><a href="{{ route('categories.show', $category->id) }}">{{$category->name}}</a></td>
 			<td><a href="{{ route('categories.edit', $category->id) }}" class="btn btn-warning"><span class="glyphicon glyphicon-wrench"></span></a><a href="{{ route('categories.destroy', $category->id) }}" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a></td>
 		</tr>
