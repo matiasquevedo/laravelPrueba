@@ -19,7 +19,6 @@
   		<table class="table table-striped">
   <thead>
     <tr>
-      <th>#Id</th>
       <th>Nombre</th>
       <th>Tipo</th>
       <th>Accion</th>
@@ -36,11 +35,10 @@
 	@else
 		@foreach($users as $user)
 		<tr>
-			<td>{{$user->id}}</td>
 			<td>{{$user->name}}</td>
       <td>
       @if($user->name == "Matias Quevedo")
-        <span class="text-center" style="font-size: 50px;"><img src="/images/jesus.svg" alt="" width="20%"></span>
+        <span class="text-center" style="font-size: 50px;"><img src="/images/jesus.svg" alt="" width="15%"></span>
       @else 
         @if($user->type == "member")
           <span class="label label-success">{{ $user->type }}</span>

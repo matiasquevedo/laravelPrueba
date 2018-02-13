@@ -15,7 +15,7 @@ class AddArticlesTable extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('state',['0','1'])->default('0');
+            $table->enum('state',['0','1','2'])->default('0');
             $table->string('title');
             $table->text('bajada');
             $table->text('volanta');

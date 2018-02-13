@@ -34,7 +34,6 @@
   <thead>
     <tr>
       <th></th>
-      <th>#Id</th>
       <th>Titulo</th>
       <th>URL</th>
       <th>Categoria</th>
@@ -47,7 +46,6 @@
     @foreach($articles as $article)
     <tr>
       <td>{{ Form::checkbox('box[]',$article->id, null, ['class' => 'field']) }}</td>
-      <td>{{$article->id}}</td>
       <td> <a href="{{ route('articles.show', $article->id) }}">{{$article->title}}</a></td>
       <td><a href="http://diario.brickdiario.com/article/{{$article->id}}">diario.brickdiario.com/article/{{$article->id}}</a></td>
       <td>{{$article->category->name}}</td>
