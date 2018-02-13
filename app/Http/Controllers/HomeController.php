@@ -30,6 +30,8 @@ class HomeController extends Controller
             return view('editor.index');
         }elseif ($request->user()->type == 'even') {
             return view('eventista.index');
+        }elseif ($request->user()->type == 'revisor') {
+            return view('revisor.index');
         }
         
         

@@ -47,6 +47,10 @@ class User extends Authenticatable
         return $this->type === 'even';
     }
 
+    public function revisor(){
+        return $this->type === 'revisor';
+    }
+
     public function ads(){
         return $this->hasMany('App\Ad');
     }

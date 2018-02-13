@@ -60,6 +60,7 @@ class Kernel extends HttpKernel
         'admin'=> \App\Http\Middleware\Admin::class,
         'editor'=> \App\Http\Middleware\Editor::class,
         'eventista'=> \App\Http\Middleware\Eventista::class,
+        'revisor'=> \App\Http\Middleware\Revisor::class,
         'cors' => \App\Http\Middleware\Cors::class,
     ];
 }

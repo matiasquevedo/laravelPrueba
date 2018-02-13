@@ -253,6 +253,64 @@ Route::group(['prefix'=>'even','middleware'=>['auth','eventista']], function(){
 
 });
 
+Route::group(['prefix'=>'revisor','middleware'=>['auth','revisor']], function(){
+
+	Route::get('/',function(){
+		return view('revisor.index');
+	})->name('revisor.inicio');
+
+	Route::get('misarticles',[
+		'uses'=>'ArticlesController@RevisorArticles',
+		'as'=>'revisor.articles.articlesList'
+	]);
+
+	Route::get('articles',[
+		'uses'=>'ArticlesController@RevisorList',
+		'as'=>'revisor.articles.list'
+	]);	
+
+	Route::post('articles',[
+		'uses'=>'ArticlesController@RevisorStore',
+		'as'=>'revisor.articles.store'
+	]);
+
+	Route::get('articles/{id}/edit',[
+		'uses'=>'ArticlesController@RevisorArticleEdit',
+		'as'=>'revisor.articles.edit'
+	]);
+	Route::put('articles/{id}/update',[
+		'uses'=>'ArticlesController@RevisorArticleUpdate',
+		'as'=>'revisor.articles.update'
+	]);
+
+
+	Route::get('articles/{id}/show',[
+		'uses'=>'ArticlesController@RevisorArticleShow',
+		'as'=>'revisor.articles.show'
+	]);
+
+	Route::get('articles/create',[
+		'uses'=>'ArticlesController@RevisorArticleCreate',
+		'as'=>'revisor.articles.create'
+	]);
+
+	Route::get('articles/{id}/editMiArticulos',[
+		'uses'=>'ArticlesController@RevisorArticleEditMiArticulos',
+		'as'=>'revisor.articles.editMiMiArticulos'
+	]);
+	Route::put('articles/{id}/update',[
+		'uses'=>'ArticlesController@RevisorArticleUpdateMiArticulos',
+		'as'=>'revisor.articles.updateMiArticulosMiArticulos'
+	]);
+
+	Route::get('articles/{id}/destroy',[
+		'uses'=>'ArticlesController@RevisorArticleDestroy',
+		'as'=>'revisor.articles.destroy'
+	]);
+		
+
+});
+
 
 
 #

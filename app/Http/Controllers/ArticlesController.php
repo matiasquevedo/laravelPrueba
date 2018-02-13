@@ -346,8 +346,112 @@ class ArticlesController extends Controller
         return view('show')->with('article',$article)->with('image',$image);
     }
 
+    
+    ////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////
+    ////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////////////////////////REVISOR!!!!!!!!!!!!//////////////////////////////////////
+
+    public function RevisorArticles(Request $request){
+        $id = \Auth::user()->id;
+        $articles = DB::table('articles')->where('user_id','LIKE',"%$id%")->get();
+        return view('revisor.misarticulos.index')->with('articles',$articles);
+    }
+
+    public function RevisorList(Request $request){
+        $articles = DB::table('articles')->where('state','LIKE',"0")->get();
+        return view('revisor.articles.list')->with('articles',$articles);
+    }
+
+    public function RevisorArticleEdit($id){
+        $article = Article::find($id);
+        $article->category;
+        $art_tags=$article->tags->pluck('id')->ToArray();
+        $categories = Category::orderBy('name','DESC')->pluck('name','id');
+        $tags = Tag::orderBy('name','ASC')->pluck('name','id');
+       # dd($article);
+        return view('revisor.articles.edit')->with('categories',$categories)->with('tags',$tags)->with('article',$article)->with('art_tags',$art_tags);
+    }
+
+    public function RevisorArticleUpdate(Request $request, $id)
+    {
+        //
+        $article = Article::find($id);
+        $article->fill($request->all());
+        $article->save();
+        $article->tags()->sync($request->tags);
+        flash('Se a editado el articulo ' . $article->title)->success();
+        return redirect()->route('revisor.articles.list');
+    }
+
+    public function RevisorArticleShow($id){
+        $article = Article::find($id);
+        $image = DB::table('images')->where('article_id',$id)->value('foto');        
+
+        return view('revisor.misarticulos.show')->with('article',$article)->with('image',$image);
+
+    }
+
+    public function RevisorArticleCreate(){
+        $categories = Category::orderBy('name','ASC')->pluck('name','id');
+        $tags = Tag::orderBy('name','ASC')->pluck('name','id');
+        return view('revisor.misarticulos.create')->with('categories',$categories)->with('tags',$tags);
+
+    }
+
+    public function RevisorStore(ArticleRequest $request)
+    {
+        //Manipulacion de Imagenes
+        if($request->file('image')){
+            $file = $request->file('image');
+            $name = 'diario_' . time() . '.' . $file->getClientOriginalExtension();
+            $path = public_path() . '/images/articles/';
+            $file->move($path,$name);
+        }
+        $article = new Article($request->all());
+        $article->user_id = \Auth::user()->id;
+        $article->save();
+
+        $image = new Image();
+        $image->foto = $name;
+        $image->article()->associate($article);
+        $image->save();
+
+        $article->tags()->sync($request->tags);
+        flash('Se creado el articulo ' . $article->title)->success();
+        return redirect()->route('revisor.articles.articlesList');
+
+    }
+
+    public function RevisorArticleEditMiArticulos($id){
+        $article = Article::find($id);
+        $article->category;
+        $art_tags=$article->tags->pluck('id')->ToArray();
+        $categories = Category::orderBy('name','DESC')->pluck('name','id');
+        $tags = Tag::orderBy('name','ASC')->pluck('name','id');
+       # dd($article);
+        return view('revisor.misarticulos.edit')->with('categories',$categories)->with('tags',$tags)->with('article',$article)->with('art_tags',$art_tags);
+    }
+
+    public function RevisorArticleUpdateMiArticulos(Request $request, $id)
+    {
+        //
+        $article = Article::find($id);
+        $article->fill($request->all());
+        $article->save();
+        $article->tags()->sync($request->tags);
+        flash('Se a editado el articulo ' . $article->title)->success();
+        return redirect()->route('revisor.articles.articlesList');
+    }
+
+    public function RevisorArticleDestroy($id){
+        $article = Article::find($id);
+        $article->delete();
+        flash('Se a eliminado el articulo ' . $article->title)->error();
+        return redirect()->route('revisor.articles.articlesList');
+
+    }
 
 
+    
 
 }
 
