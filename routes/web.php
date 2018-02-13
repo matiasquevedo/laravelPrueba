@@ -294,11 +294,11 @@ Route::group(['prefix'=>'revisor','middleware'=>['auth','revisor']], function(){
 		'as'=>'revisor.articles.create'
 	]);
 
-	Route::get('articles/{id}/editMiArticulos',[
+	Route::get('miarticles/{id}/editMiArticulos',[
 		'uses'=>'ArticlesController@RevisorArticleEditMiArticulos',
 		'as'=>'revisor.articles.editMiMiArticulos'
 	]);
-	Route::put('articles/{id}/update',[
+	Route::put('miarticles/{id}/update',[
 		'uses'=>'ArticlesController@RevisorArticleUpdateMiArticulos',
 		'as'=>'revisor.articles.updateMiArticulosMiArticulos'
 	]);
