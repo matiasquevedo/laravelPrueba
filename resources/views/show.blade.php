@@ -8,7 +8,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-      <img src="/images/articles/{{$image}}" alt="">
+      <img src="/images/articles/{{$image}}" width="500px" height="auto" alt="">
       <h1>{{$article->title}}</h1>
       <h4> {{$article->category->name}} - Por: {{$article->user->name}} </h4>
       <div>
