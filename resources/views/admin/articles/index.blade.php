@@ -53,11 +53,12 @@
       @if($article->user->name == "Matias Quevedo")
         <span class="text-center" style="font-size: 50px;"><img src="/images/jesus.svg" alt="" width="25%"></span>
       @else 
-        @if($article->user->type == "member")
-          {{$article->user->name}}
+         @if($article->user->type == "member")
+          <a href="{{ route('user.articles', $article->user->id) }}">{{$article->user->name}}</a> 
           <span class="label label-success">{{ $article->user->type }}</span>
         @else
-          {{$article->user->name}}
+          <a href="{{ route('user.articles', $article->user->id) }}">{{$article->user->name}}</a>
+          
           <span class="label label-info">{{$article->user->type}}</span>
         @endif
       @endif

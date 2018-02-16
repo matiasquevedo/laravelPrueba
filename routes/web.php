@@ -141,6 +141,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'as'=>'evento.undpost'
 	]);
 
+	Route::get('user/{id}/articles',[
+		'uses'=>'UsersController@ArticlesForUser',
+		'as'=>'user.articles'
+	]);
+
 
 
 	

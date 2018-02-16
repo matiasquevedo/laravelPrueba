@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\DB;
 class UsersController extends Controller
 {
     /**
@@ -105,5 +106,13 @@ class UsersController extends Controller
         flash('Se a eliminado ' . $user->name . ' de forma exitosa')->error();
         $user->delete();
         return redirect()->route('users.index');
+    }
+
+    public function ArticlesForUser($id){
+        $user = User::find($id);
+        $articles = DB::table('articles')->where('user_id','LIKE',"%$id%")->get();
+
+        return view('admin.users.articles')->with('articles',$articles)->with('user',$user);
+
     }
 }
