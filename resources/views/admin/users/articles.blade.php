@@ -26,8 +26,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      @foreach($articles as $article)
+    @foreach($articles as $article)
+    <tr>      
       <td> <a href="{{ route('articles.show', $article->id) }}">{{$article->title}}</a></td>
       <td><a href="http://diario.brickdiario.com/article/{{$article->id}}">diario.brickdiario.com/article/{{$article->id}}</a></td>
       <td>
@@ -46,10 +46,9 @@
           <span class="glyphicon glyphicon-remove"></span>
         </a>
       </td>
-      @endforeach
+      
     </tr>
-
-  	
+  	@endforeach
   </tbody>
 </table>	
 
