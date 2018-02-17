@@ -15,7 +15,7 @@
 
   </div>
   <div class="col-md-10">
-      <h3>Articulos por: {{$user->name}} </h3>
+      <h3>Articulos por: {{$user->name}} - Cantidad: {{$count}} </h3>
   		<table class="table table-striped">
   <thead>
     <tr>

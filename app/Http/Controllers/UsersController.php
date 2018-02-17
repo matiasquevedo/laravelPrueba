@@ -111,8 +111,8 @@ class UsersController extends Controller
     public function ArticlesForUser($id){
         $user = User::find($id);
         $articles = DB::table('articles')->where('user_id','LIKE',"%$id%")->get();
-
-        return view('admin.users.articles')->with('articles',$articles)->with('user',$user);
+        $count = $articles->count();
+        return view('admin.users.articles')->with('articles',$articles)->with('user',$user)->with('count',$count);
 
     }
 }
