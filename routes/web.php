@@ -146,6 +146,37 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'as'=>'user.articles'
 	]);
 
+	////PRODUCTO
+	Route::get('preducto/create',[
+		'uses'=>'AdsController@ProductoCreate',
+		'as'=>'admin.preducto.create'
+	]);
+
+	Route::post('preducto',[
+		'uses'=>'AdsController@ProductoStore',
+		'as'=>'admin.preducto.store'
+	]);
+	
+	Route::get('preducto/{id}/destroy',[
+		'uses'=>'AdsController@ProductoDestroy',
+		'as'=>'admin.preducto.destroy'
+	]);
+
+	Route::get('preducto/{id}/show',[
+		'uses'=>'AdsController@ProductoShow',
+		'as'=>'admin.preducto.show'
+	]);
+
+	Route::get('preducto/{id}/edit',[
+		'uses'=>'AdsController@ProductoEdit',
+		'as'=>'admin.preducto.edit'
+	]);
+
+	Route::put('preducto/{id}/update',[
+		'uses'=>'AdsController@ProductoUpdate',
+		'as'=>'admin.preducto.update'
+	]);
+
 
 
 	

@@ -1,7 +1,7 @@
 @extends('admin.template.main')
 
 
-@section('title', 'Nuevo Publicidad')
+@section('title', 'Nuevo Contrato')
 
 @section('content')
 
@@ -112,7 +112,7 @@
 			<hr>
 			<div>
 				{!! Form::label('Paquete') !!}
-				{!! Form::select('paquete', array('1' => 'Paquete 1','2' => 'Paquete 2'), null,['class'=>'form-control select-tag','multiple']) !!}
+				{!! Form::select('paquetes[]',$productos, null,['class'=>'form-control select-tag','multiple']) !!}
 			</div>
 		</div>
 		<div class="form-group">
