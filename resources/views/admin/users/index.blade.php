@@ -68,12 +68,21 @@
 
   </div>
   <div class="col-md-1">
-  	
-  	
-
+    
+    
   </div>
 </div>
 
+<div id="users" class="text-left"> 
+  <div class="btn btn-warning">Usuarios Conectados (En Desarrollo)</div>
+    @foreach($activities as $activity)
+      <div>{{$activity->user->name}}</div>
+    @endforeach
+</div>
 
+
+@endsection
+
+@section('js')
 
 @endsection

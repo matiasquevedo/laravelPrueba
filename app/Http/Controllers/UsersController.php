@@ -7,6 +7,7 @@ use App\User;
 use Laracasts\Flash\Flash;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
+use Activity;
 class UsersController extends Controller
 {
     /**
@@ -18,8 +19,16 @@ class UsersController extends Controller
     {
         //
         $users = User::orderBy('id','ASC')->paginate(5);
-        return view('admin.users.index')->with('users', $users);
+        $activities = Activity::users(1)->get();
+        /*foreach ($activities as $activity) {
+            dd($activity->user->name);
+        }*/
+        return view('admin.users.index')->with('users', $users)->with('activities', $activities);
     }
+
+    
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -115,4 +124,13 @@ class UsersController extends Controller
         return view('admin.users.articles')->with('articles',$articles)->with('user',$user)->with('count',$count);
 
     }
+
+    public function kk(){
+        $activities = Activity::users(1)->get();
+        /*foreach ($activities as $activity) {
+            dd($activity->user->name);
+        }*/
+        return "hola";
+    }
+
 }

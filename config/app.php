@@ -181,6 +181,7 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
         LaravelFCM\FCMServiceProvider::class,
         Benwilkins\FCM\FcmNotificationServiceProvider::class,
+        Kim\Activity\ActivityServiceProvider::class,
 
 
     ],
@@ -237,6 +238,7 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class,
+        'Activity' => Kim\Activity\ActivityFacade::class,
 
     ],
 

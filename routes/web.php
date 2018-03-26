@@ -33,6 +33,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'as'=>'users.destroy'
 	]);
 
+	Route::get('users/conectados',[
+		'uses'=>'UsersController@kk',
+		'as'=>'users.conectados'
+	]);
+
 	Route::resource('categories','CategoriesController');
 	Route::get('categories/{id}/destroy',[
 		'uses'=>'CategoriesController@destroy',
@@ -88,11 +93,6 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'as'=>'ads.destroy'
 	]);
 
-	Route::resource('ads','AdsController');
-	Route::get('ads/{id}/destroy',[
-		'uses'=>'AdsController@destroy',
-		'as'=>'ads.destroy'
-	]);
 
 	Route::get('eventos',[
 		'uses'=>'EventosController@index',
@@ -342,6 +342,58 @@ Route::group(['prefix'=>'revisor','middleware'=>['auth','revisor']], function(){
 	Route::get('articles/{id}/destroy',[
 		'uses'=>'ArticlesController@RevisorArticleDestroy',
 		'as'=>'revisor.articles.destroy'
+	]);
+		
+
+});
+
+
+Route::group(['prefix'=>'nuevo','middleware'=>['auth','nova']], function(){
+
+	Route::get('/',function(){
+		return view('nova.index');
+	})->name('nuevo.inicio');
+		
+
+});
+
+Route::group(['prefix'=>'ventas','middleware'=>['auth','ventas']], function(){
+
+	Route::get('/',function(){
+		return view('vendedor.index');
+	})->name('vendedor.inicio');
+
+
+	//PUBLICIDAD VENDEDOR
+	Route::get('articles',[
+		'uses'=>'AdsController@VentasIndex',
+		'as'=>'vendedor.ads.index'
+	]);
+
+	Route::post('articles',[
+		'uses'=>'ArticlesController@EditorStore',
+		'as'=>'editor.articles.store'
+	]);
+
+	Route::get('articles/create',[
+		'uses'=>'ArticlesController@EditorArticleCreate',
+		'as'=>'editor.articles.create'
+	]);
+	Route::get('articles/{id}/show',[
+		'uses'=>'ArticlesController@EditorArticleShow',
+		'as'=>'editor.articles.show'
+	]);
+	Route::get('articles/{id}/edit',[
+		'uses'=>'ArticlesController@EditorArticleEdit',
+		'as'=>'editor.articles.edit'
+	]);
+	Route::put('articles/{id}/update',[
+		'uses'=>'ArticlesController@EditorArticleUpdate',
+		'as'=>'editor.articles.update'
+	]);
+	Route::get('articles/{id}/destroy',[
+		'uses'=>'ArticlesController@EditorArticleDestroy',
+		'as'=>'editor.articles.destroy'
 	]);
 		
 

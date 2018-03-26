@@ -61,6 +61,8 @@ class Kernel extends HttpKernel
         'editor'=> \App\Http\Middleware\Editor::class,
         'eventista'=> \App\Http\Middleware\Eventista::class,
         'revisor'=> \App\Http\Middleware\Revisor::class,
+        'nova'=> \App\Http\Middleware\Nova::class,
+        'ventas'=> \App\Http\Middleware\Ventas::class,
         'cors' => \App\Http\Middleware\Cors::class,
     ];
 }
