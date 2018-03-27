@@ -302,6 +302,9 @@ class ArticlesController extends Controller
 
     }
 
+    public function EditorDocumentacion(){
+        return view('editor.documentacion.doc');
+    }
 
     public function ApiIndex(){
 
