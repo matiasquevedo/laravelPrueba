@@ -244,6 +244,11 @@ Route::group(['prefix'=>'editor','middleware'=>['auth','editor']], function(){
 		'as'=>'editor.articles.destroy'
 	]);
 
+	Route::get('documentacion',[
+		'uses'=>'ArticlesController@EditorDocumentacion',
+		'as'=>'editor.documentacion'
+	]);
+
 	Route::post('tags/modal',[
 		'uses'=>'TagsController@ModalStore',
 		'as'=>'tags.moda.store'
@@ -370,10 +375,6 @@ Route::group(['prefix'=>'ventas','middleware'=>['auth','ventas']], function(){
 		'as'=>'vendedor.ads.index'
 	]);
 
-	Route::post('articles',[
-		'uses'=>'ArticlesController@EditorStore',
-		'as'=>'editor.articles.store'
-	]);
 
 	
 
