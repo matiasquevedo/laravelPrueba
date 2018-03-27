@@ -375,27 +375,7 @@ Route::group(['prefix'=>'ventas','middleware'=>['auth','ventas']], function(){
 		'as'=>'editor.articles.store'
 	]);
 
-	Route::get('articles/create',[
-		'uses'=>'ArticlesController@EditorArticleCreate',
-		'as'=>'editor.articles.create'
-	]);
-	Route::get('articles/{id}/show',[
-		'uses'=>'ArticlesController@EditorArticleShow',
-		'as'=>'editor.articles.show'
-	]);
-	Route::get('articles/{id}/edit',[
-		'uses'=>'ArticlesController@EditorArticleEdit',
-		'as'=>'editor.articles.edit'
-	]);
-	Route::put('articles/{id}/update',[
-		'uses'=>'ArticlesController@EditorArticleUpdate',
-		'as'=>'editor.articles.update'
-	]);
-	Route::get('articles/{id}/destroy',[
-		'uses'=>'ArticlesController@EditorArticleDestroy',
-		'as'=>'editor.articles.destroy'
-	]);
-		
+	
 
 });
 

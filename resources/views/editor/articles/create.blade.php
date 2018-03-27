@@ -40,7 +40,7 @@
 				</div>
 
 				<div class="form-group">
-				{!! Form::label('bajada','Bajada*') !!}<p><i>Minimo 8 Caracteres</i></p>
+				{!! Form::label('bajada','Bajada*') !!}<p><i>Minimo 30 Caracteres</i></p>
 				{!! Form::text('bajada',null,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
 				</div>
 
@@ -50,7 +50,7 @@
 				</div>
 
 				<div class="form-group">
-				{!! Form::label('content','Contenido*') !!}
+				{!! Form::label('content','Contenido*') !!}<p><i>Minimo 280 Caracteres</i></p>
 				{!! Form::textarea('content',null,['class'=>'form-control','id'=>'trumbowyg-demo','placeholder'=>'Contenido','required']) !!}
 				</div>
 			</div>
@@ -70,7 +70,7 @@
 				</div>
 
 				<div class="form-group">
-				{!! Form::label('fuente','Fuente*') !!}<p><i>Minimo 8 Caracteres</i></p>
+				{!! Form::label('fuente','Fuente*') !!}<p><i>Fuente propia colocar: Brick</i></p>
 				{!! Form::text('fuente',null,['class'=>'form-control','placeholder'=>'Fuente']) !!}
 				</div>
 
