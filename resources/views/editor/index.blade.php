@@ -37,7 +37,7 @@
 		
 	</a>
     
-	<a href="{{ route('')}}">
+	<a href="">
 		<div class="col-sm-4">
       <img class="homepage-grid-icon" src="//cdn.shopify.com/s/files/1/0691/5403/t/141/assets/wrenches-icon.svg?16007593649882510692">
       <h5><strong>Documentación</strong></h5>
