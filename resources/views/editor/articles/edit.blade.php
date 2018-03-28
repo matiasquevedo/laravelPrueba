@@ -36,12 +36,22 @@
 		<div class="row">
   			<div class="col-md-8">
 				<div class="form-group">
-				{!! Form::label('title','Titulo') !!}
+				{!! Form::label('title','Titulo') !!}<p><i>Minimo 8 Caracteres</i></p>
 				{!! Form::text('title',$article->title,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
 				</div>
 
 				<div class="form-group">
-				{!! Form::label('content','Contenido') !!}
+				{!! Form::label('bajada','Bajada*') !!}<p><i>Minimo 30 Caracteres</i></p>
+				{!! Form::text('bajada',$article->bajada,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
+				</div>
+
+				<div class="form-group">
+				{!! Form::label('volanta','Volanta*') !!}<p><i>Minimo 8 Caracteres</i></p>
+				{!! Form::text('volanta',$article->volanta,['class'=>'form-control','placeholder'=>'Titulo','required']) !!}
+				</div>
+
+				<div class="form-group">
+				{!! Form::label('content','Contenido') !!}<p><i>Minimo 280 Caracteres</i></p>
 				{!! Form::textarea('content',$article->content,['class'=>'form-control','id'=>'trumbowyg-demo','placeholder'=>'Contenido','required']) !!}
 				</div>
 			</div>
@@ -56,8 +66,13 @@
 
 
 				<div class="form-group">
-				{!! Form::label('tags','Tags') !!}
-				{!! Form::select('tags[]',$tags, $art_tags,['class'=>'form-control select-tag','multiple','required']) !!}
+				{!! Form::label('tags','Columna') !!}
+				{!! Form::select('tags[]',$tags, $art_tags,['class'=>'form-control select-tag','multiple']) !!}
+				</div>
+
+				<div class="form-group">
+				{!! Form::label('fuente','Fuente*') !!}<p><i>Fuente propia colocar: Brick</i></p>
+				{!! Form::text('fuente',$article->fuente,['class'=>'form-control','placeholder'=>'Fuente']) !!}
 				</div>
   			</div>
 		</div>	
