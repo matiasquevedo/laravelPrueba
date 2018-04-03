@@ -6787,3 +6787,12 @@ button.close {
   position: fixed !important;
 }
 
+.seccion{
+  margin-bottom: 150px !important;
+}
+
+.imgDoc{ 
+  padding: 15px 15px 15px 100px; 
+  background-color: #b2b2b2;
+}
+
