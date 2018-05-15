@@ -182,6 +182,7 @@ return [
         LaravelFCM\FCMServiceProvider::class,
         Benwilkins\FCM\FcmNotificationServiceProvider::class,
         Kim\Activity\ActivityServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
 
     ],

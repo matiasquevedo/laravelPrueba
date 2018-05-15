@@ -50,6 +50,7 @@ Gracias a este cambio de paradigma, un articulo no es solo el relato escrito de 
 		<div>
 		<p>Los artículos de Brick cuentan de siete elementos obligatorios que deben cumplir algunas condiciones:
 		</p>
+		<b>Nota: Todos los elementos del articulo deben escribirse en letra minuscula.</b>
 		<p><b>Título:</b> Es un campo obligatorio y debe ser atractivo e interesante, de al menos 8 caracteres.</p>
 		<p><b>Bajada:</b> Se encuentra debajo del título y debe resumir los aspectos mas importantes del articulo. Es obligatorio y de al menos 30 caracteres.</p>
 		<p><b>Volanta:</b>Complementa al título, anticipando información. Es obligatorio y de al menos 8 caracteres.</p>
