@@ -18,6 +18,8 @@ use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
+use File;
+use Illuminate\Support\Facades\Storage;
 
 class ArticlesController extends Controller
 {
@@ -146,11 +148,12 @@ class ArticlesController extends Controller
     public function edit($id)
     {
         $article = Article::find($id);
+        $image = DB::table('images')->where('article_id',$id)->value('foto');
         $article->category;
         $art_tags=$article->tags->pluck('id')->ToArray();
         $categories = Category::orderBy('name','ASC')->pluck('name','id');
         $tags = Tag::orderBy('name','ASC')->pluck('name','id');
-        return view('admin.articles.edit')->with('categories',$categories)->with('tags',$tags)->with('article',$article)->with('art_tags',$art_tags);
+        return view('admin.articles.edit')->with('categories',$categories)->with('tags',$tags)->with('article',$article)->with('art_tags',$art_tags)->with('image',$image);
     }
 
     /**
@@ -169,6 +172,66 @@ class ArticlesController extends Controller
         $article->tags()->sync($request->tags);
         flash('Se a editado el articulo ' . $article->title)->success();
         return redirect()->route('articles.index');
+    }
+
+    public function ImagesUpdate(Request $request){
+        $actividad = Article::find($request->article_id);
+        $imageD = Image::where('article_id',$request->article_id)->first();
+        //
+        if ($imageD == null) {
+            if($request->file('image')){
+                $file = $request->file('image');
+                $name = 'article_' . time() . '.' . $file->getClientOriginalExtension();
+                $path = public_path() . '/images/articles/';
+                $file->move($path,$name);
+            }
+            $actividad->save();
+            $image = new Image();
+            $image->foto = $name;
+            $image->article()->associate($actividad);
+                    
+            $image->save();
+            # code...
+        } else {                    
+            $path = public_path() . '/images/articles/';
+            if (file_exists($path.$imageD->foto)) {
+                $imageD->delete(); 
+                File::delete($path.$imageD->foto);                if($request->file('image')){
+                    $file = $request->file('image');
+                    $name = 'article_' . time() . '.' . $file->getClientOriginalExtension();
+                    $path = public_path() . '/images/articles/';
+                    $file->move($path,$name);
+                }
+                $actividad->save();
+                $image = new Image();
+                $image->foto = $name;
+                $image->article()->associate($actividad);
+                        
+                $image->save();
+            } else {
+                //dd("sin imagen, sin archivo");
+                $path = public_path() . '/images/articles/';
+                File::delete($path.$imageD->foto);
+                if($request->file('image')){
+                    $file = $request->file('image');
+                    $name = 'article_' . time() . '.' . $file->getClientOriginalExtension();
+                    $path = public_path() . '/images/articles/';
+                    $file->move($path,$name);
+                }                
+                $actividad->save();
+                $image = new Image();
+                $image->foto = $name;
+                $image->article()->associate($actividad);
+                        
+                $image->save();
+            }
+        }
+        
+
+        //dd($image);
+        flash('Se a cambiado la imagen de portada de la actividad ' . $actividad->title)->success();
+        return redirect()->route('articles.show',$actividad->id);
+        
     }
 
     /**

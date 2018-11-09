@@ -78,6 +78,11 @@ Route::group(['prefix'=>'admin','middleware'=>['auth','admin']], function(){
 		'as'=>'articles.notificar'
 	]);
 
+	Route::post('articles/image/update',[ 
+		'uses'=>'ArticlesController@ImagesUpdate',
+		'as'=>'images.update'
+	]);
+
 
 	
 

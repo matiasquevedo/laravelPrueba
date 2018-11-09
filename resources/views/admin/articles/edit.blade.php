@@ -74,6 +74,16 @@
 				{!! Form::label('fuente','Fuente*') !!}<p><i>Minimo 8 Caracteres</i></p>
 				{!! Form::text('fuente',$article->fuente,['class'=>'form-control','placeholder'=>'Fuente']) !!}
 				</div>
+
+				<!--Agrego codigo para editar opcion de foto-->
+				<div class="form-group">
+				{!! Form::label('image','Imagen Portada*') !!}
+				<img src="/images/articles/{{$image}}" alt="" width="400" height="400">
+				{!! Form::file('image',['id'=>'upload','name'=>'image']) !!}
+				</div>
+
+				
+				<!--FIn codigo de editar opcion de foto-->
   			</div>
 		</div>	
 

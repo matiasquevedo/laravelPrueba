@@ -17,6 +17,49 @@
     </div>
   </div>
 
+  <div>
+    <div class="cambiar-portada">                      
+      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter"><i class="far fa-edit"></i>
+      </button>
+    </div>
+    <img src="/images/articles/{{$image}}" width="500">
+  </div>
+
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title" id="exampleModalLongTitle"> Nueva Imagen de Portada </h3>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <div>
+            {!! Form::open(['route'=>'images.update', 'method'=>'POST', 'enctype'=>'multipart/form-data']) !!}
+            {{csrf_field()}}
+
+            <div class="form-group" style="display: none">
+            {!!Form::text('article_id',$article->id,null,['class'=>'form-control','required']) !!}
+            </div>
+
+            <div class="form-group">
+            {!! Form::label('image','Imagen de Portada*') !!}
+            {!! Form::file('image',['id'=>'upload','name'=>'image']) !!}
+            </div>
+
+            <div class="preview">
+              <img id="image" width="400" height="400">
+            </div><br>
+
+            <div class="form-group">
+              {!! Form::submit('Actualizar',['class'=>'btn btn-primary']) !!}
+            </div>
+            {!! Form::close() !!} 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 	<div class="container-fluid">
   		<h3>{{$article->title}} 
   		@if($article->state == '0')
@@ -36,31 +79,23 @@
   		<div class="panel panel-default">
   			<div class="panel-body" id="content">
   				
-          <div>
-
             <div>
-              <h4>{!!$article->bajada!!}</h4>
-            </div>
-            
-  					{!!$article->content!!}  					
-  				
-          </div>
-          <div>
-            <div>
-              <h3>Fuente: {!!$article->fuente!!}</h3>
-            </div>
-          </div>
 
-  				<div>
-  					<div>
-  						<h4>Imagen de Portada</h4>
-  					</div>
-  					<div>
-  						<img src="/images/articles/{{$image}}" alt="">
-  					</div>
-  				</div>
-  				
+              <div>
+                <h4>{!!$article->bajada!!}</h4>
+              </div>
+              
+    					{!!$article->content!!}  					
+    				
+            </div>
+            <div>
+              <div>
+                <h3>Fuente: {!!$article->fuente!!}</h3>
+              </div>
+            </div>
   			</div>
+  				
+  		</div>
 		</div>
 	</div>
 @endsection
